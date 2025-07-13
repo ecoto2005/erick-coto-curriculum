@@ -1,0 +1,320 @@
+body {
+    margin: 0;
+    padding: 0;
+    min-height: 100vh;
+    font-family: 'Roboto', sans-serif;
+    color: #2d3748;
+    overflow-x: hidden;
+    position: relative;
+}
+
+.parallax {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, #e6f0fa 0%, #b3c9e0 100%);
+    z-index: -1;
+    background-attachment: fixed;
+    background-position: center;
+    background-size: cover;
+}
+
+#particles-js {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+}
+
+.container {
+    max-width: 900px;
+    margin: 80px auto;
+    padding: 40px;
+    position: relative;
+    z-index: 1;
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(12px);
+    border-radius: 25px;
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.2);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.hero-header {
+    text-align: center;
+    margin-bottom: 70px;
+    padding: 40px;
+    background: linear-gradient(135deg, #edf2f7 0%, #e2e8f0 100%);
+    border-radius: 15px;
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.1);
+    animation: fadeInDown 1s ease-out;
+}
+
+.title {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 3.5em;
+    color: #2a4365;
+    margin: 0;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 4px;
+    text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.1);
+}
+
+.timeline {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 20px 0;
+}
+
+.timeline-dot {
+    font-family: 'Lora', serif;
+    font-size: 1.4em;
+    color: #d69e2e;
+    margin: 0 25px;
+    position: relative;
+    transition: transform 0.3s ease;
+}
+
+.timeline-dot:hover {
+    transform: scale(1.2);
+}
+
+.timeline-line {
+    width: 120px;
+    height: 3px;
+    background: linear-gradient(to right, #d69e2e, #2a4365);
+    position: relative;
+    top: -6px;
+}
+
+.subtitle {
+    color: #4a5568;
+    font-size: 1.3em;
+    margin-top: 15px;
+    font-style: italic;
+    font-family: 'Lora', serif;
+}
+
+.section {
+    margin-bottom: 40px;
+    padding: 35px;
+    border-radius: 20px;
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1);
+    transition: transform 0.5s ease, box-shadow 0.5s ease;
+    opacity: 0;
+    transform: translateY(60px);
+    background: linear-gradient(135deg, #ffffff 0%, #f7fafc 100%);
+    border: 1px solid rgba(255, 255, 255, 0.5);
+}
+
+.section:hover {
+    transform: translateY(-15px);
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.2);
+}
+
+.section h2 {
+    color: #2a4365;
+    font-size: 2.1em;
+    margin: 0 0 30px;
+    border-bottom: 5px solid #2a4365;
+    padding-bottom: 12px;
+    font-weight: 700;
+    font-family: 'Lora', serif;
+    display: flex;
+    align-items: center;
+}
+
+.section h2 i {
+    margin-right: 15px;
+    animation: pulse 2s infinite;
+}
+
+.item {
+    display: flex;
+    align-items: center;
+    margin: 18px 0;
+    line-height: 1.9;
+}
+
+.icon {
+    color: #d69e2e;
+    margin-right: 30px;
+    font-size: 1.7em;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    position: relative;
+}
+
+.icon::after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    background: radial-gradient(circle, rgba(255, 255, 255, 0.3) 0%, transparent 70%);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.item:hover .icon {
+    transform: scale(1.4);
+}
+
+.item:hover .icon::after {
+    opacity: 1;
+}
+
+.content {
+    flex: 1;
+    color: #4a5568;
+    font-size: 1.2em;
+}
+
+.content a {
+    color: #2a4365;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.content a:hover {
+    color: #1a202c;
+    text-decoration: underline;
+}
+
+.skills .skill-item {
+    margin: 20px 0;
+}
+
+.skill-name {
+    font-weight: 500;
+    color: #4a5568;
+    display: inline-block;
+    margin-right: 20px;
+    font-size: 1.2em;
+}
+
+.progress-bar {
+    width: 100%;
+    background: #edf2f7;
+    border-radius: 10px;
+    height: 25px;
+    overflow: hidden;
+    position: relative;
+}
+
+.progress {
+    height: 100%;
+    background: linear-gradient(to right, #2a4365, #d69e2e);
+    width: 0;
+    border-radius: 10px;
+    transition: width 1.5s ease-out;
+    position: relative;
+}
+
+.percent {
+    position: absolute;
+    right: 10px;
+    color: #ffffff;
+    font-weight: 700;
+    font-size: 1em;
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
+}
+
+.hobbies .item {
+    margin-left: 50px;
+}
+
+.experience h3 {
+    color: #4a5568;
+    font-size: 1.7em;
+    margin: 25px 0 12px;
+    font-weight: 500;
+    font-family: 'Roboto', sans-serif;
+}
+
+.experience ul {
+    padding-left: 35px;
+    margin: 0;
+}
+
+.experience li {
+    margin: 15px 0;
+    color: #4a5568;
+    transition: color 0.3s ease, transform 0.3s ease;
+}
+
+.experience li:hover {
+    color: #2a4365;
+    transform: translateX(10px);
+}
+
+.sub-subsection h4 {
+    color: #718096;
+    font-size: 1.5em;
+    margin: 20px 0 12px;
+    font-weight: 500;
+}
+
+footer {
+    text-align: center;
+    padding: 25px;
+    color: #4a5568;
+    font-size: 1.1em;
+    background: rgba(255, 255, 255, 0.9);
+    border-radius: 15px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+    margin-top: 50px;
+    font-family: 'Lora', serif;
+}
+
+/* Animaciones */
+@keyframes fadeInDown {
+    from { opacity: 0; transform: translateY(-50px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.1); }
+    100% { transform: scale(1); }
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .container {
+        padding: 20px;
+        margin: 40px auto;
+    }
+    .hero-header {
+        padding: 20px;
+    }
+    .title {
+        font-size: 2.5em;
+    }
+    .section {
+        padding: 20px;
+    }
+    .section h2 {
+        font-size: 1.7em;
+    }
+    .item {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    .icon {
+        margin-right: 0;
+        margin-bottom: 10px;
+    }
+    .timeline {
+        flex-direction: column;
+    }
+    .timeline-line {
+        width: 60px;
+        margin: 5px 0;
+    }
+}
