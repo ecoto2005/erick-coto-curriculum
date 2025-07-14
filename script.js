@@ -4,9 +4,9 @@ document.addEventListener('scroll', () => {
     sections.forEach(section => {
         const sectionTop = section.getBoundingClientRect().top;
         const windowHeight = window.innerHeight;
-        if (sectionTop < windowHeight - 100) {
-            section.style.opacity = '1';
-            section.style.transform = 'translateY(0)';
+        if (sectionTop < windowHeight - 100 && !section.dataset.animated) {
+            section.dataset.animated = "true";
+            section.classList.add('visible');
         }
     });
 });
@@ -16,25 +16,28 @@ document.addEventListener('DOMContentLoaded', () => {
     const progressBars = document.querySelectorAll('.progress');
     progressBars.forEach(bar => {
         const percent = bar.getAttribute('data-percent');
+        bar.style.setProperty('--percent', `${percent}%`);
         setTimeout(() => {
-            bar.style.width = `${percent}%`;
+            bar.classList.add('animate');
         }, 500);
     });
 });
 
-// Inicialización de partículas
-particlesJS.load('particles-js', 'particles.json', function() {
-    console.log('Particles.js loaded');
+// Inicialización de partículas con configuración mejorada
+particlesJS.load('particles-js', {
+    "particles": {
+        "number": { "value": 80, "density": { "enable": true, "value_area": 800 } },
+        "color": { "value": "#ecc94b" },
+        "shape": { "type": "circle" },
+        "opacity": { "value": 0.5, "random": true },
+        "size": { "value": 3, "random": true },
+        "line_linked": { "enable": true, "distance": 150, "color": "#4a5d7c", "opacity": 0.4, "width": 1 },
+        "move": { "enable": true, "speed": 2, "direction": "none", "random": false, "straight": false, "out_mode": "out" }
+    },
+    "interactivity": {
+        "events": { "onhover": { "enable": true, "mode": "repulse" }, "onclick": { "enable": true, "mode": "push" } },
+        "modes": { "repulse": { "distance": 100 }, "push": { "particles_nb": 4 } }
+    }
+}, function() {
+    console.log('Particles.js loaded with enhanced config');
 });
-
-// Actualizar fecha y hora en el footer
-function updateFooterTime() {
-    const footer = document.querySelector('footer p');
-    const now = new Date();
-    const options = { hour: '2-digit', minute: '2-digit', hour12: true, timeZone: 'America/Costa_Rica' };
-    const time = now.toLocaleTimeString('en-US', options).toLowerCase().replace(' ', '');
-    const date = now.toLocaleDateString('es-CR', { day: '2-digit', month: 'long', year: 'numeric' });
-    footer.textContent = `Generado el: ${time}, ${date}`;
-}
-updateFooterTime();
-setInterval(updateFooterTime, 60000);
